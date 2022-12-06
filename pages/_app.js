@@ -9,19 +9,42 @@ import * as React from 'react';
 import { useRouter } from 'next/router';
 import Login from './index'
 
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#7c4dff',
+      main: '#651fff',
+      dark: '#6200ea',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+})
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
   return (
     router.pathname === "/" ?
-      <Login />
+      <ThemeProvider theme={theme}>
+        <Login />
+      </ThemeProvider>
       :
-      <DashLayout>
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item lg={10} xs={12}>
-            <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <DashLayout>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item lg={10} xs={12}>
+              <Component {...pageProps} />
+            </Grid>
           </Grid>
-        </Grid>
-      </DashLayout>
+        </DashLayout>
+      </ThemeProvider>
   )
 }
 

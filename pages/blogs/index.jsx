@@ -32,7 +32,7 @@ export default function Blogs() {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Link href={'/blogs/edit'} style={{textDecoration:"none"}}>
+                                    <Link href={'/blogs/edit'} style={{ textDecoration: "none" }}>
                                         <Button size="small" variant='text'>Edit</Button>
                                     </Link>
                                     <Button size="small" color='error' variant='text' disableElevation>Delete</Button>
@@ -52,7 +52,9 @@ export default function Blogs() {
                             }}
                         >
                             <Paper variant="outlined" square sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', border: '1px dashed #c9c9c9' }}>
-                                <Button sx={{ width: '100%' }} startIcon={<AddIcon />} variant="text">Add Blog</Button>
+                                <Link href={'/blogs/edit'} style={{width: '100%', textDecoration:'none'}}>
+                                    <Button sx={{ width: '100%', height: '100%' }} startIcon={<AddIcon />} variant="text">Add Blog</Button>
+                                </Link>
                             </Paper>
                         </Box>
                     </Grid>

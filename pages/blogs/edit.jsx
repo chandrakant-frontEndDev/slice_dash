@@ -25,6 +25,11 @@ export default function edit() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    const imageUploaded = ({ target }) => {
+        console.log(target.files[0]);
+        // const base64 = window.URL.createObjectURL(fileObj);
+    }
     return (
         <>
             <Toolbar />
@@ -43,31 +48,35 @@ export default function edit() {
                             '& > :not(style)': {
                                 // m: 1,
                                 width: '100%',
-                                height: 228,
                             },
                         }}
                     >
-                        <Paper variant="outlined" square sx={{ padding: '1em' }}>
+                        <Paper variant="outlined" square sx={{ padding: '1em', height: '100%' }}>
                             <Box
                                 component="form"
                                 sx={{
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'flex-start',
-                                    '& > :not(style)': { m: 1 },
+                                    height: '100%'
                                 }}
                                 noValidate
                                 autoComplete="off"
                             >
-                                <h1 contentEditable="true">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error, voluptates!</h1>
-                                <TextField id="outlined-basic" label="Title" type={'text'} variant="outlined" sx={{ minWidth: '50%' }} />
-                                <Button variant="contained" component="label" endIcon={<PhotoCamera />}>
+                                <TextField id="outlined-basic" label="Title" type={'text'} variant="outlined" sx={{ width: '100%', margin: '1em 0em' }} />
+                                <Typography variant="caption" display="block" gutterBottom>
+                                    Image Preview
+                                </Typography>
+                                <Paper variant="outlined" sx={{ width: '100%', height: '400px', margin: '0em 0em 1em 0em' }}>
+
+                                </Paper>
+                                <Button variant="contained" component="label" endIcon={<PhotoCamera />} sx={{ margin: '1em 0em' }}>
                                     Upload
-                                    <input hidden accept="image/*" multiple type="file" />
+                                    <input hidden accept="image/*" multiple type="file" onChange={imageUploaded} />
                                 </Button>
 
                                 {/* <TextField id="outlined-basic" label="Password" type={'password'} variant="outlined" /> */}
-                                <Button variant='contained' size='large'>save</Button>
+                                <Button variant='contained' size='large' sx={{ margin: '1em 0em' }}>save</Button>
                             </Box>
                         </Paper>
                     </Box>
